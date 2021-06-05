@@ -17,21 +17,26 @@ namespace fabiostefani.io.Muquirana.Cadastros.Data.Mappings
             .IsRequired();
 
             builder.Property(x => x.Ativo)
+            .HasColumnName("ATIVO")
             .IsRequired();
 
             builder.Property(x => x.Descricao)
+            .HasColumnName("DESCRICAO")
             .HasMaxLength(250)
             .IsRequired(true)
             .HasColumnType("varchar(250)");
 
             builder.Property(x => x.Nome)
+            .HasColumnName("NOME")
             .HasMaxLength(100)
             .IsRequired(true)
             .HasColumnType("varchar(100)");
 
             builder.Property(x => x.DataCadastro)
+            .HasColumnName("DATACADASTRO")
             .IsRequired();
             
         }
+                
     }
 }
