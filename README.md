@@ -26,3 +26,23 @@ A estrutura final de diretórios ficou dessa forma
 dotnet new solution --name fabiostefani.io.Muquirana
 ```
 Estou indicando para ser criado uma Solution com o nome fabiostefani.io.Muquirana.
+
+<br>5º - Criação dos Projetos. No diretório especifico de cada projeto, devemos criar a sua classlib e adicionar na solution.
+Vamos criar primeiro o nosso Core, aonde teremos a base para as nossas aplicações.
+```
+dotnet new classlib --name fabiostefani.io.Muquirana.Core
+```
+Agora vamos adicionar esse projeto a solution
+```
+dotnet sln ..\..\..\fabiostefani.io.Muquirana.sln add .\fabiostefani.io.Muquirana.Core\fabiostefani.io.Muquirana.Core.csproj
+```
+E assim vamos criando os demais projetos da solution.
+```
+dotnet new classlib --name fabiostefani.io.Muquirana.Cadastros.Domain
+
+dotnet sln ..\..\..\fabiostefani.io.Muquirana.sln remove .\fabiostefani.io.Muquirana.Cadastros.Domain\fabiostefani.io.Muquirana.Cadastros.Domain.csproj
+```
+E para adicionar a referência entre os projetos, deve ser executado
+```
+dotnet add .\fabiostefani.io.Muquirana.Cadastros.Domain\fabiostefani.io.Muquirana.Cadastros.Domain.csproj reference ..\Core\fabiostefani.io.Muquirana.Core\fabiostefani.io.Muquirana.Core.csproj
+```
