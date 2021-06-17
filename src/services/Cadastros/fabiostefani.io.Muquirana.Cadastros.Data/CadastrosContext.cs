@@ -33,18 +33,37 @@ namespace fabiostefani.io.Muquirana.Cadastros.Data
         {
             foreach ( var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("DataCadastro") != null))
             {
-                if (entry.State == EntityState.Added)
-                {
-                    entry.Property("DataCadastro").CurrentValue = DateTime.Now;
-                }
-
-                if (entry.State == EntityState.Modified)
-                {
-                    entry.Property("DataCadastro").IsModified = false;
-                }
+                TratarDataCadastro(entry);
+                TratarDataAlteracao(entry);
             }
 
             return await base.SaveChangesAsync() > 0;
+        }
+
+        private static void TratarDataAlteracao(Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry entry)
+        {
+            if (entry.State == EntityState.Modified)
+            {
+                entry.Property("DataAlteracao").CurrentValue = DateTime.Now;
+            }
+
+            if (entry.State == EntityState.Added)
+            {
+                entry.Property("DataAlteracao").IsModified = false;
+            }
+        }
+
+        private static void TratarDataCadastro(Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry entry)
+        {
+            if (entry.State == EntityState.Added)
+            {
+                entry.Property("DataCadastro").CurrentValue = DateTime.Now;
+            }
+
+            if (entry.State == EntityState.Modified)
+            {
+                entry.Property("DataCadastro").IsModified = false;
+            }
         }
     }
 }

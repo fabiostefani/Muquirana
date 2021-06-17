@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using fabiostefani.io.Muquirana.Cadastros.Domain.Categorias.Subcategorias;
 using fabiostefani.io.Muquirana.Core.DomainObjects;
 
 namespace fabiostefani.io.Muquirana.Cadastros.Domain.Categorias
@@ -11,12 +13,15 @@ namespace fabiostefani.io.Muquirana.Cadastros.Domain.Categorias
         public string Nome { get; private set; }        
         public string Descricao { get; private set; }
         public bool Ativo { get; set; }
-        public DateTime DataCadastro { get; private set; }
+
+         private readonly List<Subcategoria> _subcategorias;
+         public IReadOnlyCollection<Subcategoria> Subcategorias => _subcategorias;
 
         public Categoria(string nome, string descricao)
         {
             Nome = nome;
             Descricao = descricao;
+            _subcategorias = new List<Subcategoria>();
             Ativar();
             Validar();
         }

@@ -5,6 +5,8 @@ namespace fabiostefani.io.Muquirana.Core.DomainObjects
     public abstract class Entity
     {
         public Guid Id { get; set; }
+        public DateTime DataCadastro { get; set; }
+        public DateTime? DataAlteracao { get; set; }        
 
         protected Entity()
         {

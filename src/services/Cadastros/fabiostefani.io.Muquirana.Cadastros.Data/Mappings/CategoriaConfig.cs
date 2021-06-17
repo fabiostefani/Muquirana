@@ -14,7 +14,8 @@ namespace fabiostefani.io.Muquirana.Cadastros.Data.Mappings
 
             builder.Property(x => x.Id)
             .HasColumnName("IDCATEGORIA")
-            .IsRequired();
+            .IsRequired()
+            .HasMaxLength(100);
 
             builder.Property(x => x.Ativo)
             .HasColumnName("ATIVO")
@@ -23,19 +24,23 @@ namespace fabiostefani.io.Muquirana.Cadastros.Data.Mappings
             builder.Property(x => x.Descricao)
             .HasColumnName("DESCRICAO")
             .HasMaxLength(250)
-            .IsRequired(true)
+            .IsRequired()
             .HasColumnType("varchar(250)");
 
             builder.Property(x => x.Nome)
             .HasColumnName("NOME")
             .HasMaxLength(100)
-            .IsRequired(true)
+            .IsRequired()
             .HasColumnType("varchar(100)");
 
             builder.Property(x => x.DataCadastro)
             .HasColumnName("DATACADASTRO")
             .IsRequired();
-            
+
+            builder.HasMany(x => x.Subcategorias)
+            .WithOne(x => x.Categoria)
+            .HasForeignKey(x => x.CodigoCategoria);
+
         }
                 
     }
