@@ -1,6 +1,6 @@
 # Muquirana
 
-![Imgur](https://i.imgur.com/1IoDbax.png)
+<div style="text-align:center"><img src="https://i.imgur.com/04OvSmd.png" /></div>
 
 Software para controle de Despesas Pessoais. Possui fins didáticos para entendimento de conceitos de Bound Context, Eventos de Domínio....
 
